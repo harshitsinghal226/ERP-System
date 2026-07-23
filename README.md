@@ -121,15 +121,23 @@ To convert this Python application into a standalone Windows `.exe` application,
 
 ### 1. Install PyInstaller
 ```bash
-pip install pyinstaller
+py -m pip install pyinstaller
 ```
 
 ### 2. Build the Application
-Run the following command from the project root. This command uses the spec file to package the app.
+Run the following command from the project root. This command uses the spec file to package the app as a windowed Windows application (without console):
 
 ```bash
 py -m PyInstaller AashuJewellers.spec
 ```
+
+Alternatively, to build it manually as a single windowed `.exe` file without the spec file, you can run:
+
+```bash
+py -m PyInstaller --noconsole --onefile --windowed --icon="assets\icons\app_icon.ico" main.py
+```
+
+*(Note: Building with the `.spec` file is recommended as it correctly includes all required assets, folders, and CustomTkinter dependencies.)*
 
 ### 3. Distribute
 Once the build is complete:
